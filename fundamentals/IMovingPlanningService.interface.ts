@@ -1,6 +1,6 @@
 export interface IMovingPlanningService {
     
-    researchMovingCompanies(): Promise<void>;
+    researchMovingCompanies(): Promise<string[]>;
 
     readBadReviews(): Promise<void>;
 
@@ -15,4 +15,6 @@ export interface IMovingPlanningService {
     communicateWithMovingCompany(weeksBeforeMove?: number, daysBeforeMove?: number): Promise<void>;
 
     signNewApartment(daysBeforeCurrentLeaseFinishes: number): Promise<void>;
+
+    execute(): Promise<void>;
 }

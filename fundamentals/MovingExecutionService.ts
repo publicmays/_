@@ -1,6 +1,14 @@
 import { IMovingExecutionService, WrapMediumMaterial } from "./IMovingExecutionService.interface";
 
 export class MovingExecutionService implements IMovingExecutionService {
+
+    constructor() {
+        
+    }
+    
+    execute(): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
     wrapPreciousValuables(): Promise<void> {
         throw new Error("Method not implemented.");
     }

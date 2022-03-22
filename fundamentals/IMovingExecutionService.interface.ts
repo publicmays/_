@@ -15,4 +15,6 @@ export interface IMovingExecutionService {
     moveInitialItemsToNewApartment(daysBeforeCurrentLeaseFinishes: number): Promise<void>;
 
     setVacationRangeForExpectedMovingPeriod(): Promise<void>;
+
+    execute(): Promise<void>;
 }
