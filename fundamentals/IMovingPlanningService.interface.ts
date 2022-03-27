@@ -1,20 +1,14 @@
 export interface IMovingPlanningService {
-    
-    researchMovingCompanies(): Promise<string[]>;
 
-    readBadReviews(): Promise<void>;
+    readBadReviews(): Promise<string[]>;
 
-    figureOutMitigationsForBadReviewIssues(): Promise<void>;
+    figureOutMitigationsForBadReviewIssues(badReviewList: string[]): Promise<Map<string, string>>;
 
-    pickMovingCompany(): Promise<void>;
+    pickMovingCompany(): Promise<string>;
 
-    pickBackupMovingCompany(): Promise<void>;
+    makeAppointmentWithMovingCompany(movingCompany: string): Promise<string>;
 
-    makeAppointmentWithMovingCompany(): Promise<void>;
-
-    communicateWithMovingCompany(weeksBeforeMove?: number, daysBeforeMove?: number): Promise<void>;
-
-    signNewApartment(daysBeforeCurrentLeaseFinishes: number): Promise<void>;
+    signNewApartment(daysBeforeCurrentLeaseFinishes: number): Promise<string>;
 
     execute(): Promise<void>;
 }
