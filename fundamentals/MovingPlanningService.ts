@@ -1,6 +1,7 @@
 import { IMovingPlanningService } from "./IMovingPlanningService.interface";
 
 let movingCompanyList:string[] | undefined;
+let cuttingDownOnItems: string[] | undefined;
 
 export class MovingPlanningService implements IMovingPlanningService {
     public newApartment: string;
@@ -12,11 +13,16 @@ export class MovingPlanningService implements IMovingPlanningService {
     }
 
     async execute(): Promise<void> {
+        cuttingDownOnItems = await this.getItemsToCutDownOn();
         this.newApartment = await this.signNewApartment(20);
         this.movingCompany = await this.pickMovingCompany();
         const badReviewList = await this.readBadReviews();
         this.mitigationMap = await this.figureOutMitigationsForBadReviewIssues(badReviewList);
         const confirmation = await this.makeAppointmentWithMovingCompany(this.movingCompany);
+    }
+
+    async getItemsToCutDownOn() {
+        return ["books", "alcoholBottles", "candles", "bathroomItems"];
     }
     
     async figureOutMitigationsForBadReviewIssues(badReviewList: string[]): Promise<Map<string, string>> {
